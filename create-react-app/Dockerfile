@@ -9,13 +9,14 @@ LABEL org.label-schema.schema-version "3.4.1"
 LABEL org.label-schema.docker.cmd "docker container run -d -p 3000:3000 -v $(pwd)/react-app:/react-app -e HUID="$(id -u)" -e HGID="$(id -g)" -e HUNAME="$(id -nu)" gusdev/create-react-app"
 
 RUN apk add rsync git --no-cache && \
-    mkdir /react-app /tmp/react-app
+    mkdir /react-app /tmp/react-app && \
+    chown -R node:node /usr/local/lib/node_modules && \
+    chown -R node:node /react-app && \
+    chown -R node:node /tmp/react-app
 
 ENV HUID 1000
 
 ENV HGID 1000
-
-ENV HUNAME node
 
 RUN npx create-react-app /tmp/react-app && \
     npm cache clean --force && \
