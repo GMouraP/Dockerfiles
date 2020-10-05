@@ -1,0 +1,21 @@
+version: '2.4'
+
+services: 
+    react-app:
+        container_name: react-app
+        image: gusdev/create-react-app:3.4.1
+        tty: true
+        environment:
+            HUID: ${HUID:~( id -u )}
+            HGID: ${HGID:~( id -u )}
+            # HUID: ${HUID}
+            # HGID: ${HGID}
+        ports: 
+            - "8080:3000"
+        volumes:
+            - ./react-app:/react-app
+        networks:
+            - react_app_network
+
+networks:
+  react_app_network: 
