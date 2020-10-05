@@ -6,7 +6,7 @@ LABEL maintainer="gusdev77@gmail.com"
 # Labels
 LABEL org.label-schema.name "gusdev/create-react-app"
 LABEL org.label-schema.schema-version "3.4.1"
-LABEL org.label-schema.docker.cmd "docker container run -d -p 3000:3000 -v $(pwd)/react-app:/react-app -e HUID="$(id -u)" -e HGID="$(id -g)" -e HUNAME="$(id -nu)" gusdev/create-react-app"
+LABEL org.label-schema.docker.cmd "docker container run -d -p 3000:3000 -v $(pwd)/react-app:/react-app -e HUID=\"$(id -u)\" -e HGID=\"$(id -g)\" gusdev/create-react-app"
 
 RUN apk add rsync git --no-cache && \
     mkdir /react-app /tmp/react-app && \
